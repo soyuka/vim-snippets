@@ -1,0 +1,33 @@
+priority -50
+
+snippet ocol "ocol"
+@ORM\Column(name="${1}", type="${2}")${3}
+endsnippet
+
+snippet ojoincol "ojoincol"
+@ORM\JoinColumn(name="${1}", referencedColumnName="${2}")${3}
+endsnippet
+
+snippet ojointable "ojointable"
+@ORM\JoinTable(name="${1}",
+  joinColumns={${2:ojoincol}},
+  inverseJoinColumns={${3:ojoincol}}
+)${4}
+endsnippet
+
+snippet ooneToOne "ooneToOne"
+@ORM\OneToOne(targetEntity="${1}")${2}
+endsnippet
+
+snippet omanyToOne "omanyToOne"
+@ORM\ManyToOne(targetEntity="${1}")${2}
+endsnippet
+
+snippet ooneToMany "ooneToMany"
+@ORM\OneToMany(targetEntity="${1}", mappedBy="${2}")${3}
+endsnippet
+
+snippet omanyToMany "omanyToMany"
+@ORM\ManyToMany(targetEntity="${1}", inversedBy="${2}")
+${3:ojointable}
+endsnippet
